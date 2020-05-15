@@ -126,3 +126,6 @@ A self JOIN is a case of regular join where a table is joined to itself based on
 
 ## 13.What is a Cross-Join?
 Cross join can be defined as a cartesian product of the two tables included in the join. The table after join contains the same number of rows as in the cross-product of number of rows in the two tables. If a WHERE clause is used in cross join then the query will work like an INNER JOIN.
+
+<img width="845" alt="Self join_Cross join" src="https://user-images.githubusercontent.com/61290493/82003648-7f7c5600-9626-11ea-80fc-6450e96e0587.png">
+
