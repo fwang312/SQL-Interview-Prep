@@ -129,3 +129,65 @@ Cross join can be defined as a cartesian product of the two tables included in t
 
 <img width="845" alt="Self join_Cross join" src="https://user-images.githubusercontent.com/61290493/82003648-7f7c5600-9626-11ea-80fc-6450e96e0587.png">
 
+## 14.What is an Index? Explain its different types.
+A database index is a data structure that provides quick lookup of data in a column or columns of a table. It enhances the speed of operations accessing data from a database table at the cost of additional writes and memory to maintain the index data structure.
+
+数据库索引是一种数据结构，可以快速查找表的一个或多个列中的数据。 它以额外的写入和内存维护索引数据结构为代价，提高了从数据库表访问数据的操作速度。
+
+```html
+example:
+CREATE INDEX index_name 	 /* Create Index */
+ON table_name (column_1, column_2);
+
+DROP INDEX index_name; 	 /* Drop Index */
+```
+There are different types of indexes that can be created for different purposes:
+#### Unique and Non-Unique Index:
+
+Unique indexes are indexes that help maintain data integrity by ensuring that no two rows of data in a table have identical key values. Once a unique index has been defined for a table, uniqueness is enforced whenever keys are added or changed within the index.
+
+```html
+CREATE UNIQUE INDEX myIndex
+ON students (enroll_no);
+```
+Non-unique indexes, on the other hand, are not used to enforce constraints on the tables with which they are associated. Instead, non-unique indexes are used solely to improve query performance by maintaining a sorted order of data values that are used frequently.
+
+#### Clustered and Non-Clustered Index:
+Clustered indexes are indexes whose order of the rows in the database correspond to the order of the rows in the index. This is why only one clustered index can exist in a given table, whereas, multiple non-clustered indexes can exist in the table.
+
+The only difference between clustered and non-clustered indexes is that the database manager attempts to keep the data in the database in the same order as the corresponding keys appear in the clustered index.
+
+Clustering index can improve the performance of most query operations because they provide a linear-access path to data stored in the database.
+
+## 16. What is Data Integrity?
+Data Integrity is the assurance of accuracy and consistency of data over its entire life-cycle, and is a critical aspect to the design, implementation and usage of any database. It also defines integrity constraints to enforce business rules on the data when it is entered into an application or a database.
+
+## 17. What is a Query?
+A query is a request for data or information from a database table or combination of tables. A database query can be either a select query or an action query.
+```html
+SELECT fname, lname 		 /* select query */
+FROM myDb.students
+WHERE student_id = 1;
+UPDATE myDB.students 		 /* action query */
+SET fname = 'Captain', lname = 'America'
+WHERE student_id = 1;
+```
+
+## 18. What is a Subquery? What are its types?
+A subquery is a query within another query, also known as nested query or inner query . It is used to restrict or enhance the data to be queried by the main query.
+
+For example, here we fetch the contact information for students who have enrolled for the maths subject:
+```html
+SELECT name, email, mob, address
+FROM myDb.contacts
+WHERE roll_no IN (
+	 SELECT roll_no
+	 FROM myDb.students
+	 WHERE subject = 'Maths');
+```
+##### There are two types of subquery - Correlated and Non-Correlated：
+
+* A correlated subquery cannot be considered as an independent query, but it can refer the column in a table listed in the FROM of the main query.
+
+* A non-correlated subquery can be considered as an independent query and the output of subquery is substituted in the main query.
+
