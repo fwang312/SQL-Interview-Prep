@@ -159,6 +159,13 @@ The only difference between clustered and non-clustered indexes is that the data
 
 Clustering index can improve the performance of most query operations because they provide a linear-access path to data stored in the database.
 
+## 15.What is the difference between Clustered and Non-clustered index?
+* Clustered index modifies the way records are stored in a database based on the indexed column. Non-clustered index creates a separate entity within the table which references the original table.
+
+* Clustered index is used for easy and speedy retrieval of data from the database, whereas, fetching records from the non-clustered index is relatively slower.
+
+* In SQL, a table can have a single clustered index whereas it can have multiple non-clustered indexes.
+
 ## 16. What is Data Integrity?
 Data Integrity is the assurance of accuracy and consistency of data over its entire life-cycle, and is a critical aspect to the design, implementation and usage of any database. It also defines integrity constraints to enforce business rules on the data when it is entered into an application or a database.
 
@@ -191,3 +198,51 @@ WHERE roll_no IN (
 
 * A non-correlated subquery can be considered as an independent query and the output of subquery is substituted in the main query.
 
+## 19. What is the SELECT statement?
+SELECT operator in SQL is used to select data from a database. The data returned is stored in a result table, called the result-set.
+
+## 20. What are some common clauses used with SELECT query in SQL?
+* WHERE clause in SQL is used to filter records that are necessary, based on specific conditions.
+
+* ORDER BY clause in SQL is used to sort the records based on some field(s) in ascending (ASC) or descending order (DESC).
+```html
+SELECT *
+FROM myDB.students
+WHERE graduation_year = 2019
+ORDER BY studentID DESC;
+```
+* GROUP BY clause in SQL is used to group records with identical data and can be used in conjuction with some aggregation functions to produce summarized results from the database.
+
+* HAVING clause in SQL is used to filter records in combination with the GROUP BY clause. It is different from WHERE, since WHERE clause cannot filter aggregated records.
+```html
+SELECT COUNT(studentId), country
+FROM myDB.students
+WHERE country != "INDIA"
+GROUP BY country
+HAVING COUNT(studentID) > 5;
+```
+
+## 21.What are UNION, MINUS and INTERSECT commands?
+* The UNION operator combines and returns the result-set retrieved by two or more SELECT statements.
+```html
+SELECT name FROM Students 	 /* Fetch the union of queries */
+UNION
+SELECT name FROM Contacts;
+
+SELECT name FROM Students 	 /* Fetch the union of queries with duplicates*/
+UNION ALL
+SELECT name FROM Contacts;	
+```
+* The MINUS operator in SQL is used to remove duplicates from the result-set obtained by the second SELECT query from the result-set obtained by the first SELECT query and then return the filtered results from the first.
+```html
+SELECT name FROM Students 	 /* Fetch names from students */
+MINUS 				/* that aren't present in contacts */
+SELECT name FROM Contacts;
+```
+* The INTERSECT clause in SQL combines the result-set fetched by the two SELECT statements where records from one match the other and then returns this intersection of result-sets.
+```html
+SELECT name FROM Students 	 /* Fetch names from students */
+INTERSECT 			/* that are present in contacts as well */
+SELECT name FROM Contacts;
+```
+## 22.
