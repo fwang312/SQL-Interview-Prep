@@ -300,3 +300,58 @@ WHERE A.emp_sup = B.emp_id;
 ## 26. What is a View?
 A view in SQL is a virtual table based on the result-set of an SQL statement. A view contains rows and columns, just like a real table. The fields in a view are fields from one or more real tables in the database.
 
+<img width="635" alt="View" src="https://user-images.githubusercontent.com/61290493/82258985-763e0280-9920-11ea-9887-d7e2c2fea449.png">
+
+## 27. What is Normalization?
+Normalization represents the way of organizing structured data in the database efficiently. It includes creation of tables, establishing relationships between them, and defining rules for those relationships. Inconsistency and redundancy can be kept in check based on these rules, hence, adding flexibility to the database.
+
+## 28. What is Denormalization?
+Denormalization is the inverse process of normalization, where the normalized schema is converted into a schema which has redundant information. The performance is improved by using redundancy and keeping the redundant data consistent. The reason for performing denormalization is the overheads produced in query processor by an over-normalized structure.
+
+## 29.What are the TRUNCATE, DELETE and DROP statements?
+* DELETE statement is used to delete rows from a table.
+```html
+DELETE FROM Candidates
+WHERE CandidateId > 1000;
+```
+* TRUNCATE command is used to delete all the rows from the table and free the space containing the table.
+```html
+TRUNCATE TABLE Candidates;
+```
+* DROP command is used to remove an object from the database. If you drop a table, all the rows in the table is deleted and the table structure is removed from the database.
+```html
+DROP TABLE Candidates;
+```
+## 30.What is the difference between DROP and TRUNCATE statements?
+If a table is dropped, all things associated with the tables are dropped as well. This includes - the relationships defined on the table with other tables, the integrity checks and constraints, access privileges and other grants that the table has. To create and use the table again in its original form, all these relations, checks, constraints, privileges and relationships need to be redefined. 
+
+However, if a table is truncated, none of the above problems exist and the table retains its original structure.
+
+## 32. What is the difference between DELETE and TRUNCATE statements?
+The TRUNCATE command is used to delete all the rows from the table and free the space containing the table.
+
+The DELETE command deletes only the rows from the table based on the condition given in the where clause or deletes all the rows from the table if no condition is specified. But it does not free the space containing the table.
+
+## 33.What are Aggregate and Scalar functions?
+An aggregate function performs operations on a collection of values to return a single scalar value. Aggregate functions are often used with the GROUP BY and HAVING clauses of the SELECT statement. Following are the widely used SQL aggregate functions:
+
+* AVG() - Calculates the mean of a collection of values.
+* COUNT() - Counts the total number of records in a specific table or view.
+* MIN() - Calculates the minimum of a collection of values.
+* MAX() - Calculates the maximum of a collection of values.
+* SUM() - Calculates the sum of a collection of values.
+* FIRST() - Fetches the first element in a collection of values.
+* LAST() - Fetches the last element in a collection of values.
+
+##### Note: All aggregate functions described above ignore NULL values except for the COUNT function.
+
+A scalar function returns a single value based on the input value. Following are the widely used SQL scalar functions:
+* LEN() - Calculates the total length of the given field (column).
+* UCASE() - Converts a collection of string values to uppercase characters.
+* LCASE() - Converts a collection of string values to lowercase characters.
+* MID() - Extracts substrings from a collection of string values in a table.
+* CONCAT() - Concatenates two or more strings.
+* RAND() - Generates a random collection of numbers of given length.
+* ROUND() - Calculates the round off integer value for a numeric field (or decimal point values).
+* NOW() - Returns the current data & time.
+* FORMAT() - Sets the format to display a collection of values.
