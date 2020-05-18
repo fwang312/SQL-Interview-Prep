@@ -245,4 +245,58 @@ SELECT name FROM Students 	 /* Fetch names from students */
 INTERSECT 			/* that are present in contacts as well */
 SELECT name FROM Contacts;
 ```
-## 22.
+## 22.What is Cursor? How to use a Cursor?
+A database cursor is a control structure that allows for traversal of records in a database. Cursors, in addition, facilitates processing after traversal, such as retrieval, addition and deletion of database records. They can be viewed as a pointer to one row in a set of rows.
+
+数据库游标是一种控制结构，允许遍历数据库中的记录。 此外，游标还有助于遍历后的处理，例如数据库记录的检索，添加和删除。 可以将它们视为指向一组行中的一行的指针。
+
+##### Working with SQL Cursor
+* DECLARE a cursor after any variable declaration. The cursor declaration must always be associated with a SELECT Statement.
+* Open cursor to initialize the result set. The OPEN statement must be called before fetching rows from the result set.
+* FETCH statement to retrieve and move to the next row in the result set.
+* Call the CLOSE statement to deactivate the cursor.
+* Finally use the DEALLOCATE statement to delete the cursor definition and release the associated resources.
+
+```html
+DECLARE @name VARCHAR(50) 	 /* Declare All Required Variables */
+
+DECLARE db_cursor CURSOR FOR 	 /* Declare Cursor Name*/
+SELECT name
+FROM myDB.students
+WHERE parent_name IN ('Sara', 'Ansh')
+
+OPEN db_cursor 	 /* Open cursor and Fetch data into @name */ 
+FETCH next
+FROM db_cursor
+INTO @name
+
+CLOSE db_cursor 	 /* Close the cursor and deallocate the resources */
+DEALLOCATE db_cursor
+```
+## 23. What are Entities and Relationships?
+Entity: An entity can be a real-world object, either tangible or intangible, that can be easily identifiable. For example, in a college database, students, professors, workers, departments, and projects can be referred to as entities. Each entity has some associated properties that provide it an identity.
+
+Relationships: Relations or links between entities that have something to do with each other. For example - The employees table in a company's database can be associated with the salary table in the same database.
+
+## 24.List the different types of relationships in SQL.
+* One-to-One - This can be defined as the relationship between two tables where each record in one table is associated with the maximum of one record in the other table.
+
+* One-to-Many & Many-to-One - This is the most commonly used relationship where a record in a table is associated with multiple records in the other table.
+
+* Many-to-Many - This is used in cases when multiple instances on both sides are needed for defining a relationship.
+
+* Self Referencing Relationships - This is used when a table needs to define a relationship with itself.
+
+## 25.What is an Alias in SQL?
+An alias is a feature of SQL that is supported by most, if not all, RDBMSs. It is a temporary name assigned to the table or table column for the purpose of a particular SQL query. In addition, aliasing can be employed as an obfuscation technique to secure the real names of database fields. A table alias is also called a correlation name .
+
+An alias is represented explicitly by the AS keyword but in some cases the same can be performed without it as well. Nevertheless, using the AS keyword is always a good practice.
+```html
+SELECT A.emp_name AS "Employee" 	/* Alias using AS keyword */
+B.emp_name AS "Supervisor"
+FROM employee A, employee B 		/* Alias without AS keyword */
+WHERE A.emp_sup = B.emp_id;
+```
+## 26. What is a View?
+A view in SQL is a virtual table based on the result-set of an SQL statement. A view contains rows and columns, just like a real table. The fields in a view are fields from one or more real tables in the database.
+
