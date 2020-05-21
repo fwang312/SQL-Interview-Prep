@@ -327,12 +327,12 @@ If a table is dropped, all things associated with the tables are dropped as well
 
 However, if a table is truncated, none of the above problems exist and the table retains its original structure.
 
-## 32. What is the difference between DELETE and TRUNCATE statements?
+## 31. What is the difference between DELETE and TRUNCATE statements?
 The TRUNCATE command is used to delete all the rows from the table and free the space containing the table.
 
 The DELETE command deletes only the rows from the table based on the condition given in the where clause or deletes all the rows from the table if no condition is specified. But it does not free the space containing the table.
 
-## 33.What are Aggregate and Scalar functions?
+## 32.What are Aggregate and Scalar functions?
 An aggregate function performs operations on a collection of values to return a single scalar value. Aggregate functions are often used with the GROUP BY and HAVING clauses of the SELECT statement. Following are the widely used SQL aggregate functions:
 
 * AVG() - Calculates the mean of a collection of values.
@@ -356,7 +356,7 @@ A scalar function returns a single value based on the input value. Following are
 * NOW() - Returns the current data & time.
 * FORMAT() - Sets the format to display a collection of values.
 
-## 34. What is User-defined function? What are its various types?
+## 33. What is User-defined function? What are its various types?
 The user-defined functions in SQL are like functions in any other programming language that accept parameters, perform complex calculations, and return a value. They are written to use the logic repetitively whenever required. There are two types of SQL user-defined functions:
 
 ##### Scalar Function
@@ -369,9 +369,13 @@ User-defined table-valued functions return a table as output.
 	
 * Multi-statement: returns a tabular result-set but, unlike inline, multiple SELECT statements can be used inside the function body.
 
-## 35. What is OLTP?
-OLTP stands for Online Transaction Processing, is a class of software applications capable of supporting transaction-oriented programs. An essential attribute of an OLTP system is its ability to maintain concurrency. To avoid single points of failure, OLTP systems are often decentralized. These systems are usually designed for a large number of users who conduct short transactions. Database queries are usually simple, require sub-second response times and return relatively few records. 
+## 34. What are the differences between OLTP and OLAP?
+* OLTP stands for Online Transaction Processing, is a class of software applications capable of supporting transaction-oriented programs. An important attribute of an OLTP system is its ability to maintain concurrency.  Queries involved in such databases are generally simple, need fast response times and return relatively few records. Number of transactions per second acts as an effective measure for such systems.
 
-OLTP代表在线事务处理，它是一类能够支持面向事务的程序的软件应用程序。 OLTP系统的基本属性是它保持并发的能力。 为了避免单点故障，OLTP系统通常是分散的。 这些系统通常是为进行短交易的大量用户设计的。 数据库查询通常很简单，需要亚秒级的响应时间，并且返回的记录相对较少。
+* OLAP stands for Online Analytical Processing, a class of software programs which are characterized by relatively low frequency of online transactions. Queries are often  complex and involve a bunch of aggregations. 
 
+For OLAP systems, the effectiveness measure relies highly on response time. Such systems are widely used for data mining or maintaining aggregated, historical data, usually in multi-dimensional schemas.
 
+<img width="822" alt="OLTP" src="https://user-images.githubusercontent.com/61290493/82511493-1a67ab00-9ad3-11ea-990e-16d59b290143.png">
+
+## 
