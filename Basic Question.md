@@ -379,5 +379,71 @@ For OLAP systems, the effectiveness measure relies highly on response time. Such
 <img width="722" alt="OLTP AND OLAP" src="https://user-images.githubusercontent.com/61290493/82512055-93b3cd80-9ad4-11ea-8785-9baf21f51c26.png">
 
 ## 35.What is a Stored Procedure?
-A stored procedure is a subroutine available to applications that access a relational database management system (RDBMS). Such procedures are stored in the database data dictionary. The sole disadvantage of stored procedure is that it can be executed nowhere except in the database and occupies more memory in the database server. It also provides a sense of security and functionality as users who can't access the data directly can be granted access via stored procedures.
+* A stored procedure is a subroutine available to applications that access a relational database management system (RDBMS). Such procedures are stored in the database data dictionary. 
 
+* The sole disadvantage of stored procedure is that it can be executed nowhere except in the database and occupies more memory in the database server. 
+
+* It also provides a sense of security and functionality as users who can't access the data directly can be granted access via stored procedures.
+
+<img width="931" alt=" Stored Procedure" src="https://user-images.githubusercontent.com/61290493/82513304-37eb4380-9ad8-11ea-8a55-ffa2792e7467.png">
+
+```html
+DELIMITER $$
+CREATE PROCEDURE FetchAllStudents()
+BEGIN
+SELECT *  FROM myDB.students;
+END $$
+DELIMITER ;
+```
+## 36. How to create empty tables with the same structure as another table?
+Creating empty tables with the same structure can be done smartly by fetching the records of one table into a new table using the INTO operator while fixing a WHERE clause to be false for all records. Hence, SQL prepares the new table with a duplicate structure to accept the fetched records but since no records get fetched due to the WHERE clause in action, nothing is inserted into the new table.
+```html
+SELECT * INTO Students_copy
+FROM Students WHERE 1 = 2;
+```
+
+## 37.What is Pattern Matching in SQL?
+SQL pattern matching provides for pattern search in data if you have no clue as to what that word should be. This kind of SQL query uses wildcards to match a string pattern, rather than writing the exact word. The LIKE operator is used in conjunction with SQL Wildcards to fetch the required information.
+
+##### 1.Using the % wildcard to perform a simple search
+The % wildcard matches zero or more characters of any type and can be used to define wildcards both before and after the pattern. Search a student in your database with first name beginning with the letter K:
+```html
+SELECT *
+FROM students
+WHERE first_name LIKE 'K%'
+```
+
+##### 2.Omitting the patterns using the NOT keyword
+Use the NOT keyword to select records that don't match the pattern. This query returns all students whose first name does not begin with K.
+```html
+SELECT *
+FROM students
+WHERE first_name NOT LIKE 'K%'
+```
+##### 3.Matching a pattern anywhere using the % wildcard twice
+Search for a student in the database where he/she has a K in his/her first name.
+```html
+SELECT *
+FROM students
+WHERE first_name LIKE '%Q%'
+```
+
+##### 4.Using the _ wildcard to match pattern at a specific position
+The _ wildcard matches exactly one character of any type. It can be used in conjunction with % wildcard. This query fetches all students with letter K at the third position in their first name.
+```html
+SELECT *
+FROM students
+WHERE first_name LIKE '__K%'
+```
+
+##### 5.Matching patterns for specific length
+The _ wildcard plays an important role as a limitation when it matches exactly one character. It limits the length and position of the matched results. For example -
+```html
+SELECT * 	 /* Matches first names with three or more letters */
+FROM students
+WHERE first_name LIKE '___%'
+
+SELECT * 	 /* Matches first names with exactly four characters */
+FROM students
+WHERE first_name LIKE '____'
+```
