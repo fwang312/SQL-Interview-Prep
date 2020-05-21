@@ -447,3 +447,4 @@ SELECT * 	 /* Matches first names with exactly four characters */
 FROM students
 WHERE first_name LIKE '____'
 ```
+credit:https://www.interviewbit.com/sql-interview-questions/#questions
