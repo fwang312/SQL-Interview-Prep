@@ -355,3 +355,23 @@ A scalar function returns a single value based on the input value. Following are
 * ROUND() - Calculates the round off integer value for a numeric field (or decimal point values).
 * NOW() - Returns the current data & time.
 * FORMAT() - Sets the format to display a collection of values.
+
+## 34. What is User-defined function? What are its various types?
+The user-defined functions in SQL are like functions in any other programming language that accept parameters, perform complex calculations, and return a value. They are written to use the logic repetitively whenever required. There are two types of SQL user-defined functions:
+
+##### Scalar Function
+As explained earlier, user-defined scalar functions return a single scalar value.
+
+##### Table Valued Functions
+User-defined table-valued functions return a table as output.
+
+* Inline: returns a table data type based on a single SELECT statement.
+	
+* Multi-statement: returns a tabular result-set but, unlike inline, multiple SELECT statements can be used inside the function body.
+
+## 35. What is OLTP?
+OLTP stands for Online Transaction Processing, is a class of software applications capable of supporting transaction-oriented programs. An essential attribute of an OLTP system is its ability to maintain concurrency. To avoid single points of failure, OLTP systems are often decentralized. These systems are usually designed for a large number of users who conduct short transactions. Database queries are usually simple, require sub-second response times and return relatively few records. 
+
+OLTP代表在线事务处理，它是一类能够支持面向事务的程序的软件应用程序。 OLTP系统的基本属性是它保持并发的能力。 为了避免单点故障，OLTP系统通常是分散的。 这些系统通常是为进行短交易的大量用户设计的。 数据库查询通常很简单，需要亚秒级的响应时间，并且返回的记录相对较少。
+
+
