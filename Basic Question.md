@@ -376,6 +376,8 @@ User-defined table-valued functions return a table as output.
 
 For OLAP systems, the effectiveness measure relies highly on response time. Such systems are widely used for data mining or maintaining aggregated, historical data, usually in multi-dimensional schemas.
 
-<img width="822" alt="OLTP" src="https://user-images.githubusercontent.com/61290493/82511493-1a67ab00-9ad3-11ea-990e-16d59b290143.png">
+<img width="722" alt="OLTP AND OLAP" src="https://user-images.githubusercontent.com/61290493/82512055-93b3cd80-9ad4-11ea-8785-9baf21f51c26.png">
 
-## 
+## 35.What is a Stored Procedure?
+A stored procedure is a subroutine available to applications that access a relational database management system (RDBMS). Such procedures are stored in the database data dictionary. The sole disadvantage of stored procedure is that it can be executed nowhere except in the database and occupies more memory in the database server. It also provides a sense of security and functionality as users who can't access the data directly can be granted access via stored procedures.
+
